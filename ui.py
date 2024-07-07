@@ -1,7 +1,7 @@
 import streamlit as st
 import GPUprice as gpu
 import re
-import os 
+# import os 
 
 st.title('GPU price Scraper 📜')
 st.write("This app scrapes the prices of the GPUs from Newegg.com. Enter the name of the GPU you are looking for and the app will scrape the prices of the GPUs from Newegg.com and save the results in an excel file.📊")
