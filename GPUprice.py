@@ -3,8 +3,9 @@ import requests
 import re
 import csv
 from openpyxl import Workbook
+import ui 
 
-search = input("What GPU are you looking for? ")
+search = ui.user_input
 
 url = f"https://www.newegg.com/p/pl?d={search}"
 page = requests.get(url).text
