@@ -5,8 +5,10 @@ This project is a web scraper designed to collect GPU prices from Newegg using P
 ## Features
 
 - Scrapes GPU data from Newegg(https://www.newegg.com/) based on user input.
+- select the xlsx file name
 - Extracts GPU names and their current prices.
-- Saves the scraped data into a CSV file.
+- Saves the scraped data into a xlsx file.
+- download the xlsx file
 
 ## Installation
 
@@ -15,22 +17,21 @@ To run this project, you'll need to have Python installed on your system. You ca
 ```bash
 pip install requests beautifulsoup4
 ```
-
-## Example
-Here's an example of how to use the script:
-
 ```bash
-$ GPUprice.py
-What GPU are you looking for? RTX 3080
-Total Number of pages: 5
-Item: MSI Gaming GeForce RTX 3080
-Price: $699.99
-...
+pip install steamlit
 ```
+
 
 ## file structure
 - GPUprice.py
-- GPUprice.txt
+- ui.py
+
+# Screenshot
+![screenshot 1](https://github.com/chanupadeshan/GPU-prices/assets/90650370/2325e664-8613-4b75-905b-ef72e2305fae)
+
+![screenshot 2](https://github.com/chanupadeshan/GPU-prices/assets/90650370/a5fe1ee8-8482-49df-b1cb-2e0c06472531)
+
+![screenshot 3](https://github.com/chanupadeshan/GPU-prices/assets/90650370/0bf3736b-a941-4ae2-95a7-08fdcc12106a)
 
 ## License
 
