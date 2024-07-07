@@ -4,6 +4,9 @@ import re
 import os 
 
 st.title('GPU price Scraper 📜')
+st.write("This app scrapes the prices of the GPUs from Newegg.com. Enter the name of the GPU you are looking for and the app will scrape the prices of the GPUs from Newegg.com and save the results in an excel file.📊")
+st.markdown("<hr>", unsafe_allow_html=True)
+
 st.image("C:\projects\Web scraping\GPU-prices\gpu image.jpg")
 user_input = st.text_input("What GPU are you Looking for?")
 file_name = st.text_input("Enter the file name to save the results(only xlsx files are supported)")
@@ -16,6 +19,8 @@ else:
     split_name = file_name   
 
 file_name = f"{split_name}.xlsx"
+
+st.markdown("<hr>", unsafe_allow_html=True)
 
 if st.button("Search"):
     st.write(f"Searching 🔎")
