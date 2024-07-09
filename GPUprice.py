@@ -17,7 +17,7 @@ def scrap_gpu_price(search,file_name):
             wb = Workbook() # create a new workbook
             ws = wb.active # select the active worksheet
             ws.append([f"Number of pages: {final_page}"])
-            ws.append(["Item", "Price", "Shipping","Rated out of 5","Number of reviews","Link of the item","features"])
+            ws.append(["Item", "Price", "Shipping","Rated out of 5","Number of reviews","Link of the item"])
 
             for page_num in range(1, int(final_page) + 1):
                 page_url = f"https://www.newegg.com/p/pl?d={search}&page={page_num}"
