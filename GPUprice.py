@@ -28,7 +28,7 @@ def scrap_gpu_price(search,file_name):
                 div = page_doc.find(class_="item-cells-wrap border-cells short-video-box items-grid-view four-cells expulsion-one-cell")
                 if div:
                     items = div.find_all(text=re.compile(search, re.IGNORECASE))
-                    pattern = r'rating\s+rating-4-5'
+                    
 
                     for item in items:
                         print(item)
@@ -54,13 +54,18 @@ def scrap_gpu_price(search,file_name):
                             print(aria_label)
                         else:
                             print("No rating found")
-                        # if str(itemrating.has_attr("aria-label")):s
-                        #     print(itemrating["aria-label"])
-                        # else:
-                        #      print("No rating found")
+
+                        #number of views
+                        reviews = parent.find("div",class_= "item-info").find("a", class_="item-rating")        
+                        if reviews and reviews.find("span",class_="item-rating-num"):
+                             Number_of_reviews = reviews.find("span",class_="item-rating-num").text
+                             Number_of_reviews= Number_of_reviews.split("(")[1].split(")")[0]
+                             print(Number_of_reviews)
+                        else:
+                            print("No reviews found")              
                         
                         print("\n")
-                        ws.append([item, Total_price,split_shipping,aria_label])
+                        ws.append([item, Total_price,split_shipping,aria_label,Number_of_reviews])
 
                 else:
                     print(f"No items found on page {page_num}")
