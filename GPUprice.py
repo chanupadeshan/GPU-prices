@@ -14,10 +14,10 @@ def scrap_gpu_price(search,file_name):
             final_page = str(page_text).split("/")[1].split(">")[1].split("<")[0]
             print(f"Total Number of pages:{final_page}")
 
-            wb = Workbook()
-            ws = wb.active
+            wb = Workbook() # create a new workbook
+            ws = wb.active # select the active worksheet
             ws.append([f"Number of pages: {final_page}"])
-            ws.append(["Item", "Price", "Shipping","rated out of 5","Number of reviews","link"])
+            ws.append(["Item", "Price", "Shipping","Rated out of 5","Number of reviews","Link of the item"])
 
             for page_num in range(1, int(final_page) + 1):
                 page_url = f"https://www.newegg.com/p/pl?d={search}&page={page_num}"
@@ -40,34 +40,39 @@ def scrap_gpu_price(search,file_name):
                         price_split_sign = str(price).split("/")[1].split(">")[1].split("<")[0]
                         price_split_amount = str(price).split("/")[1].split(">")[2].split("<")[0]
                         Total_price = f"{price_split_sign} {price_split_amount}"
-                        print(price_split_sign, price_split_amount)
+                   
 
                          #get shipping
                         shipping = parent.find("li",class_="price-ship")
                         split_shipping = str(shipping).split(">")[1].split("<")[0]
-                        print(split_shipping)
+                  
                
                         #get rated out of 5
                         itemrating = parent.find("div", class_="item-info").find("a", class_="item-rating")
                         if itemrating and itemrating.find("i", class_="rating"):
                             aria_label = itemrating.find("i", class_="rating")['aria-label']
-                            print(aria_label)
-                        else:
-                            print("No rating found")
+                          
+                       
+                          
 
                         #number of views
                         reviews = parent.find("div",class_= "item-info").find("a", class_="item-rating")        
                         if reviews and reviews.find("span",class_="item-rating-num"):
                              Number_of_reviews = reviews.find("span",class_="item-rating-num").text
                              Number_of_reviews= Number_of_reviews.split("(")[1].split(")")[0]
-                             print(Number_of_reviews)
-                        else:
-                            print("No reviews found")              
+                             
+                       
+                                        
                         
                         #inside link
                         getURL = parent.find("a", class_="item-title")
-                        url = getURL['href']
-                        print(url)
+                        item_url = getURL['href']
+                        
+                        pageinside = requests.get(item_url).text
+                        pageinsidedoc = BeautifulSoup(pageinside, "html.parser")
+                        product_wrap = pageinsidedoc.find("div",class_="product-wrap")
+                        print(product_wrap)
+
                         print("\n")
                         ws.append([item, Total_price,split_shipping,aria_label,Number_of_reviews,url])
 
