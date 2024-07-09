@@ -33,6 +33,8 @@ pip install steamlit
 
 ![screenshot 3](https://github.com/chanupadeshan/GPU-prices/assets/90650370/0bf3736b-a941-4ae2-95a7-08fdcc12106a)
 
+![screenshot 4](https://github.com/chanupadeshan/GPU-prices/assets/90650370/895f94b7-8ac7-4081-869a-70bb8c5bc19a)
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
