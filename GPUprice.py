@@ -67,20 +67,10 @@ def scrap_gpu_price(search,file_name):
                         #inside link
                         getURL = parent.find("a", class_="item-title")
                         item_url = getURL['href']
-                        features = []
-                        pageinside = requests.get(item_url).text
-                        pageinsidedoc = BeautifulSoup(pageinside, "html.parser")
-                        product_wrap = pageinsidedoc.find("div",class_="product-wrap")
-                        if product_wrap and product_wrap.find("div",class_="product-bullets"):
-                             product_bullets=product_wrap.find("div",class_="product-bullets")
-                             if product_bullets and product_bullets.find("ul"):
-                                  bullets = product_bullets.find("ul").text
-                                  features.append(bullets)
-                             else:
-                                  features.append("No features found")
-                        print(features)
+                        
+                        
                         print("\n")
-                        ws.append([item, Total_price,split_shipping,aria_label,Number_of_reviews,url,features])
+                        ws.append([item, Total_price,split_shipping,aria_label,Number_of_reviews,item_url])
 
                 else:
                     print(f"No items found on page {page_num}")
