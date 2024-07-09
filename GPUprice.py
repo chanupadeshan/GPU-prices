@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
-import csv
+# import csv
 from openpyxl import Workbook
 
 
@@ -29,9 +29,8 @@ def scrap_gpu_price(search,file_name):
                 if div:
                     items = div.find_all(text=re.compile(search, re.IGNORECASE))
                     
-
                     for item in items:
-                        print(item)
+                        print(item) # print in terminal
 
                         parent = item.find_parent(class_="item-container") # parent of the item is the item-container
 
@@ -69,10 +68,10 @@ def scrap_gpu_price(search,file_name):
                         item_url = getURL['href']
                         
                         
-                        print("\n")
+                        print("\n") # print in terminal
                         ws.append([item, Total_price,split_shipping,aria_label,Number_of_reviews,item_url])
 
                 else:
-                    print(f"No items found on page {page_num}")
+                    print(f"No items found on page {page_num}") # print in terminal
 
             wb.save(file_name)
