@@ -17,7 +17,7 @@ def scrap_gpu_price(search,file_name):
             wb = Workbook()
             ws = wb.active
             ws.append([f"Number of pages: {final_page}"])
-            ws.append(["Item", "Price", "Shipping","rated out of 5","Number of reviews"])
+            ws.append(["Item", "Price", "Shipping","rated out of 5","Number of reviews","link"])
 
             for page_num in range(1, int(final_page) + 1):
                 page_url = f"https://www.newegg.com/p/pl?d={search}&page={page_num}"
@@ -64,8 +64,12 @@ def scrap_gpu_price(search,file_name):
                         else:
                             print("No reviews found")              
                         
+                        #inside link
+                        getURL = parent.find("a", class_="item-title")
+                        url = getURL['href']
+                        print(url)
                         print("\n")
-                        ws.append([item, Total_price,split_shipping,aria_label,Number_of_reviews])
+                        ws.append([item, Total_price,split_shipping,aria_label,Number_of_reviews,url])
 
                 else:
                     print(f"No items found on page {page_num}")
