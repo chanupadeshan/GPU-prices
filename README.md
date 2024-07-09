@@ -40,3 +40,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgements
 
 - [BeautifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+- [Streamlit](https://docs.streamlit.io/)
