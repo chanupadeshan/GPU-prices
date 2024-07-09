@@ -40,19 +40,14 @@ def scrap_gpu_price(search,file_name):
                         Total_price = f"{price_split_sign} {price_split_amount}"
                         print(price_split_sign, price_split_amount)
 
-                        shipping = ""
-                        parent_shipping = item.find_parent(class_="item-container")
-                        shipping = str(parent_shipping.find(class_="product-price-ship-eligible text-blue"))
-                        print(shipping)
-                        # if re.search(pattern, str(parent_shipping.text)):
-                        #     print("Free Shipping")
-                        #     shipping = "Free Shipping"
-                        # else:
-                        #      print("No shipping information available")
-                        #      shipping = "No shipping information available"
+                         
+                        parent_shipping = item.find_parent(class_="item-container") # parent of the item is the item-container
+                        shipping = parent_shipping.find("li",class_="price-ship")
+                        split_shipping = str(shipping).split(">")[1].split("<")[0]
+                        print(split_shipping)
+               
                         print("\n")
-
-                        ws.append([item, Total_price])
+                        ws.append([item, Total_price,split_shipping])
 
                 else:
                     print(f"No items found on page {page_num}")
